@@ -1,0 +1,19 @@
+{
+  "name": "blogserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.23.1",
+    "fastify-cookie": "^5.3.2",
+    "fastify-formbody": "^5.1.0",
+    "fastify-session": "^5.2.1",
+    "uuid": "^8.3.2"
+  }
+}
