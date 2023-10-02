@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import { StoreContext } from "../store";
-import { marked } from "marked";
+import { useContext, useEffect } from 'react';
+import { StoreContext } from '../store';
+import { marked } from 'marked';
 
 const List = () => {
-  const [{ todos }, dispatch] = useContext(StoreContext);
+  const {state: { todos }, dispatch } = useContext(StoreContext);
   useEffect(() => {
     dispatch({
-      type: "FETCH_ALL_TODOS",
+      type: 'FETCH_ALL_TODOS',
     });
   }, []);
   return (
@@ -15,9 +15,9 @@ const List = () => {
         {todos.map((el) => (
           <li
             key={el.id}
-            className={el.isComplete ? "completed" : ""}
+            className={el.isComplete ? 'completed' : ''}
             style={{
-              textDecoration: el.isComplete ? "line-through" : "none",
+              textDecoration: el.isComplete ? 'line-through' : 'none',
             }}
           >
             <div className="form-check">
@@ -28,7 +28,7 @@ const List = () => {
                   type="checkbox"
                   onClick={() =>
                     dispatch({
-                      type: "TOGGLE_TODO",
+                      type: 'TOGGLE_TODO',
                       payload: el.id,
                     })
                   }
@@ -41,7 +41,7 @@ const List = () => {
               className="remove mdi mdi-close-circle-outline"
               onClick={() =>
                 dispatch({
-                  type: "DELETE_TODO",
+                  type: 'DELETE_TODO',
                   payload: el.id,
                 })
               }

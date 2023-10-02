@@ -1,11 +1,11 @@
-import { Component, onMount, Show } from 'solid-js';
+import { onMount, Show } from 'solid-js';
 
 import { useStore } from '../store';
 import { Transition } from 'solid-transition-group';
 
 import Login from './Login';
 
-const Header: Component = () => {
+const Header = () => {
   const [state, { getUserInfo, logout }] = useStore();
   
   onMount(async () => {
@@ -24,7 +24,7 @@ const Header: Component = () => {
         <Transition
           mode="outin"
           onEnter={(_el, done) => {
-            const el = _el as HTMLElement;
+            const el = _el;
 
             el.style.opacity = '0';
             el.style.transition = '500ms opacity';
@@ -47,8 +47,7 @@ const Header: Component = () => {
             document.body.style.overflow = '';
           }}
           onExit={(_el, done) => {
-            const el = _el as HTMLElement;
-
+            const el = _el;
             el.style.opacity = '1';
             el.style.transition = '500ms opacity';
             document.body.clientWidth; // reflow

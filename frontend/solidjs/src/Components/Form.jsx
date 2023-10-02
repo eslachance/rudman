@@ -1,15 +1,14 @@
-import type { Component } from 'solid-js';
 import { createSignal } from 'solid-js';
 
 import { useStore } from '../store';
 
-const Form: Component = (props) => {
+const Form = () => {
   const [title, setTitle] = createSignal('');
 
   const [, { addTodo }] = useStore();
 
-  const handleChange = (event: Event) => {
-    setTitle((event.target as HTMLTextAreaElement).value);
+  const handleChange = (event) => {
+    setTitle((event.target).value);
   };
 
   const handleClickButton = () => {
@@ -17,7 +16,7 @@ const Form: Component = (props) => {
     setTitle('');
   };
 
-  const handleKeyPress = (event: KeyboardEvent) => {
+  const handleKeyPress = (event) => {
     if (event.key == "Enter") {
       event.preventDefault(); 
       handleClickButton();

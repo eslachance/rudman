@@ -1,21 +1,19 @@
-import { createContext, useContext, Component } from 'solid-js';
+import { createContext, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-import type { Todo, AppStore, State } from './types';
+const AppContext = createContext();
 
-const AppContext = createContext<AppStore>();
-
-export const AppProvider: Component = (props) => {
-  const [state, setState] = createStore<State>({
+export const AppProvider = (props) => {
+  const [state, setState] = createStore({
     auth: {
       isLoggedIn: false,
       username: '',
     },
-    todos: [] as Todo[],
+    todos: [],
   });
 
   const methods = {
-    login(username: string, password: string) {
+    login(username, password) {
       fetch('/api/login', {
         method: 'POST',
         headers: {
@@ -59,10 +57,10 @@ export const AppProvider: Component = (props) => {
     },
 
     // Todo-related routes, for implementation example.
-    setAllTodos: (todos: Todo[]) => {
+    setAllTodos: (todos) => {
       setState('todos', todos);
     },
-    fetchAllTodos(filter?: string) {
+    fetchAllTodos(filter) {
       const endpoint =
         filter && filter.length > 0
           ? `/api/search/${encodeURI(filter)}`
@@ -72,7 +70,7 @@ export const AppProvider: Component = (props) => {
         .then((r) => r.json())
         .then(methods.setAllTodos);
     },
-    addTodo: (newTodo: Todo) => {
+    addTodo: (newTodo) => {
       fetch('/api/todos', {
         method: 'POST',
         body: JSON.stringify(newTodo),
@@ -82,33 +80,33 @@ export const AppProvider: Component = (props) => {
         })
         .catch((e) => console.log(e));
     },
-    deleteTodo: (id: string) => {
+    deleteTodo: (id) => {
       console.log(id);
       fetch('/api/todos/' + id, { method: 'DELETE' })
         .then(() => {
           setState('todos', (prev) =>
-            prev.filter((item: Todo) => item.id !== id),
+            prev.filter((item) => item.id !== id),
           );
         })
         .catch((e) => console.log(e));
     },
-    toggleTodo: (id: string) => {
+    toggleTodo: (id) => {
       fetch('/api/todos/toggle/' + id)
         .then((res) => res.json())
         .then((todo) => {
           setState('todos', (prev) =>
-            prev.map((item: Todo) => (item.id === id ? todo : item)),
+            prev.map((item) => (item.id === id ? todo : item)),
           );
         })
         .catch((e) => console.log(e));
     },
   };
 
-  const store = [state, methods] as AppStore;
+  const store = [state, methods];
 
   return (
     <AppContext.Provider value={store}>{props.children}</AppContext.Provider>
   );
 };
 
-export const useStore = (): AppStore => useContext(AppContext) as AppStore;
+export const useStore = () => useContext(AppContext);

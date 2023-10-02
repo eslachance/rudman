@@ -1,5 +1,5 @@
 {
-  "name": "scrumino",
+  "name": "rudman-solid-frontend",
   "version": "0.0.0",
   "license": "MIT",
   "sideEffects": false,
@@ -9,56 +9,22 @@
     "build": "vite build",
     "serve": "vite build & serve -p 3000 --cors dist",
     "format": "prettier --write .",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
-    "test": "uvu -r tsm -r global-jsdom/register tests",
-    "test:watch": "watchlist tests src -- yarn test",
-    "prepare": "husky install"
+    "lint": "eslint . --ext ts --ext tsx --ext js"
   },
   "dependencies": {
-    "@types/marked": "^4.0.0",
-    "lodash-es": "^4.17.15",
-    "marked": "^4.0.0",
-    "solid-blocks": "^0.0.1",
-    "solid-js": "^1.2.2",
-    "solid-styled-components": "^0.27.3",
-    "solid-transition-group": "^0.0.8",
-    "uuid": "^8.3.2"
+    "marked": "^9.0.3",
+    "solid-js": "^1.7.12",
+    "solid-styled-components": "^0.28.5",
+    "solid-transition-group": "^0.2.3"
   },
   "devDependencies": {
-    "@iconify-json/mdi": "^1.0.8",
-    "@types/lodash-es": "^4.17.4",
-    "@types/node": "^16.11.6",
-    "@types/styled-components": "^5.1.15",
-    "@types/uuid": "^8.3.1",
-    "@typescript-eslint/eslint-plugin": "^4.28.5",
-    "@typescript-eslint/parser": "^4.28.5",
-    "autoprefixer": "^10.4.0",
-    "cross-env": "^7.0.3",
-    "eslint": "^7.31.0",
-    "eslint-config-prettier": "^8.3.0",
-    "global-jsdom": "^8.3.0",
-    "husky": "^7.0.4",
-    "jsdom": "^18.0.0",
-    "lint-staged": "^10.5.3",
-    "miragejs": "^0.1.42",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
     "prettier": "^2.3.2",
-    "serve": "^13.0.2",
-    "snoop": "^1.0.2",
-    "tsm": "^2.1.3",
-    "typescript": "^4.4.3",
-    "unplugin-icons": "^0.12.18",
-    "uvu": "^0.5.2",
-    "vite": "^2.5.7",
-    "vite-plugin-solid": "^2.1.2",
-    "watchlist": "^0.3.1"
+    "vite": "^4.4.9",
+    "vite-plugin-solid": "^2.7.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --quiet"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "*.{js,css,ts,tsx,md}": "prettier --write"
+  "volta": {
+    "node": "18.17.1"
   }
 }

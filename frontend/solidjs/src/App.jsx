@@ -1,4 +1,3 @@
-import type { Component } from 'solid-js';
 import { Show } from 'solid-js';
 import { Transition } from 'solid-transition-group';
 
@@ -8,7 +7,7 @@ import Header from './Components/Header';
 
 import { useStore } from './store';
 
-const App: Component = () => {
+const App = () => {
   const [state] = useStore();
 
   return (

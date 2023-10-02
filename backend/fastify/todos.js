@@ -1,9 +1,10 @@
-import { v1 as uuid } from "uuid";
+import { randomUUID } from 'crypto';
 
 let todos = [
   {
     id: "abc123",
-    title: "Visit [SolidJS](https://solidjs.com/) and get started!",
+    title:
+      "Visit [Rudman Github](https://github.com/eslachance/rudman/) and get started!",
     completed: false,
   },
   {
@@ -13,7 +14,7 @@ let todos = [
   },
   {
     id: "ghi789",
-    title: "Join the [Discord](https://discord.gg/solidjs) community for help!",
+    title: "Join the [Discord](https://discord.gg/code) community for help!",
     completed: false,
   },
 ];
@@ -39,7 +40,7 @@ async function todoRoutes(app) {
 
   app.post("/api/todos", (request, reply) => {
     let attrs = JSON.parse(request.body);
-    const id = uuid();
+    const id = randomUUID();
     todos.push({ ...attrs , id});
     reply.send({ success: true, data: { ...attrs, id } });
   });

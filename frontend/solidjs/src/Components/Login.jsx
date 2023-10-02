@@ -1,9 +1,8 @@
-import { createSignal, Show } from 'solid-js';
-import type { Component } from 'solid-js';
+import { createSignal } from 'solid-js';
 
 import { useStore } from '../store';
 
-const Login: Component = () => {
+const Login = () => {
   const [, { login }] = useStore();
   const [username, setUsername] = createSignal('');
   const [password, setPassword] = createSignal('');
@@ -38,7 +37,7 @@ const Login: Component = () => {
               aria-describedby="username-prefix"
               value={username()}
               onInput={(event) =>
-                setUsername((event.target as HTMLTextAreaElement).value)
+                setUsername((event.target).value)
               }
             />
           </div>
@@ -59,7 +58,7 @@ const Login: Component = () => {
               aria-label="Password"
               value={password()}
               onInput={(event) =>
-                setPassword((event.target as HTMLTextAreaElement).value)
+                setPassword((event.target).value)
               }
             />
           </div>

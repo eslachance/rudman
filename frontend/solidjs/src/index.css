@@ -112,10 +112,6 @@ input[type="checkbox"] {
   margin-left: auto !important;
 }
 
-.mdi-close-circle-outline:before {
-  content: "\F15A";
-}
-
 .list-wrapper ul li {
   font-size: 0.9375rem;
   padding: 0.4rem 0;

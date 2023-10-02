@@ -1,4 +1,4 @@
-const { v1: uuid } = require("uuid");
+const { randomUUID } = require("crypto");
 const express = require("express");
 const app = express.Router();
 app.use(express.json());
@@ -6,7 +6,8 @@ app.use(express.json());
 let todos = [
   {
     id: "abc123",
-    title: "Visit [SolidJS](https://solidjs.com/) and get started!",
+    title:
+      "Visit [Rudman Github](https://github.com/eslachance/rudman/) and get started!",
     completed: false,
   },
   {
@@ -16,7 +17,7 @@ let todos = [
   },
   {
     id: "ghi789",
-    title: "Join the [Discord](https://discord.gg/solidjs) community for help!",
+    title: "Join the [Discord](https://discord.gg/code) community for help!",
     completed: false,
   },
 ];
@@ -37,8 +38,8 @@ app.post("/todos", isLoggedIn, (req, res) => {
   console.log(req.body);
   const todo = {
     ...req.body,
-    id: uuid(),
-  }
+    id: randomUUID(),
+  };
   todos.push(todo);
   res.json({ success: true, data: todo });
 });

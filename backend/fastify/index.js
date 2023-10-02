@@ -1,7 +1,7 @@
 import Fastify from 'fastify';
-import fastifySession from 'fastify-session';
-import fastifyCookie from 'fastify-cookie';
-import fastifyFormbody from 'fastify-formbody';
+import fastifySession from '@fastify/session';
+import fastifyCookie from '@fastify/cookie';
+import fastifyFormbody from '@fastify/formbody';
 
 const app = Fastify({
   logger: true,
@@ -31,17 +31,18 @@ app.post("/api/login", (request, reply) => {
   }
 });
 
-import loginRoutes from "./loginRoutes.mjs";
+import loginRoutes from "./loginRoutes.js";
 app.register(loginRoutes);
 
-import todos from "./todos.mjs";
+import todos from "./todos.js";
 app.register(todos);
 
-(async () => {
-  try {
-    await app.listen(3005, '0.0.0.0');
-  } catch (err) {
-    app.log.error(err);
-    process.exit(1);
-  }
-})();
+try {
+  await app.listen({
+    port: 3005,
+    host: '0.0.0.0',
+  });
+} catch (err) {
+  app.log.error(err);
+  process.exit(1);
+}

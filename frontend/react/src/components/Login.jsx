@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
-import { StoreContext } from "../store";
+import { useContext, useState } from 'react';
+import { StoreContext } from '../store';
 
 const LoginForm = () => {
-  const [, dispatch] = useContext(StoreContext);
+  const { dispatch } = useContext(StoreContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const tryLogin = (ev) => {
-    console.log(ev);
+  const tryLogin = () => {
     dispatch({
-      type: "LOGIN",
+      type: 'LOGIN',
       payload: {
         username,
         password
@@ -27,7 +26,7 @@ const LoginForm = () => {
               className="input-group-text justify-content-center"
               id="username-prefix"
               style={{
-                width: "2.5rem",
+                width: '2.5rem',
               }}
             >
               @
@@ -48,7 +47,7 @@ const LoginForm = () => {
               className="input-group-text justify-content-center"
               id="password-prefix"
               style={{
-                width: "2.5rem",
+                width: '2.5rem',
               }}
             >
               *

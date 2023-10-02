@@ -1,5 +1,5 @@
 # Solid Foundation
-A foundation boilerplate based on Solid.js, Vite, and uvu.
+A foundation boilerplate based on Solid.js, Vite,.
 
 ## Installation
 
@@ -8,11 +8,3 @@ A foundation boilerplate based on Solid.js, Vite, and uvu.
 ## Use
 
 TBD
-
-## Contribute
-
-Uhhhh do a PR and try to make it good!
-
-## The future
-
-This should eventually be an NPX thingy or a CRA sorta thing.
