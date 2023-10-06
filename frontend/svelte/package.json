@@ -1,0 +1,22 @@
+{
+  "name": "rudman-svelte-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "eslint": "^8.50.0",
+    "eslint-plugin-svelte": "^2.34.0",
+    "svelte": "^4.0.5",
+    "unocss": "^0.56.5",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "marked": "^9.1.0"
+  }
+}

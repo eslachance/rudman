@@ -51,6 +51,7 @@ I rarely have the mental bandwidth to work on this (as apparent with the 2 years
 * Add more frameworks for frontend (angular, svelte, astro, whatever comes up as useful)
 * Add some full-stack examples (next/nuxt/etc)
 * Standardize implementations: they should all be a todo list with login and admin features.
+* Document everything, from the actual cookie implementation, reasoning, as well as how to build and serve the backend and frontend together.
 
 ## I can help, how do I???
 
