@@ -4,11 +4,24 @@ import { marked } from 'marked';
 
 const List = () => {
   const {state: { todos }, dispatch } = useContext(StoreContext);
+
   useEffect(() => {
     dispatch({
       type: 'FETCH_ALL_TODOS',
     });
   }, []);
+
+  const handleKeyDown = (e, ...args) => {
+    console.log(e, args);
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      dispatch({
+        type: 'DELETE_TODO',
+        payload: args[0],
+      });
+    }
+  };
+  
   return (
     <div className="list-wrapper">
       <ul className="d-flex flex-column-reverse todo-list">
@@ -33,7 +46,8 @@ const List = () => {
                     })
                   }
                 />
-                <span dangerouslySetInnerHTML={{__html: marked.parse(el.title)}}></span>
+                {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
+                <span dangerouslySetInnerHTML={{__html: marked.parse(el.title)}} />
                 <i className="input-helper" />
               </label>
             </div>
@@ -45,6 +59,7 @@ const List = () => {
                   payload: el.id,
                 })
               }
+              onKeyDown={handleKeyDown.bind(null, el.id)}
             />
           </li>
         ))}

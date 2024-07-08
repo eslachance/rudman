@@ -12,7 +12,6 @@ const initiaState = {
 export const StoreContext = createContext({ state: initiaState, dispatch: () => {} });
 
 const reducer = async (state, action) => {
-  console.log('Reducer called: ', state, action)
   switch (action.type) {
     case 'ADD_TODO':
       try {
@@ -30,7 +29,7 @@ const reducer = async (state, action) => {
       }
     case 'DELETE_TODO':
       try {
-        await fetch('/api/todos/' + action.payload, { method: 'DELETE' });
+        await fetch(`/api/todos/${action.payload}`, { method: 'DELETE' });
         return {
           ...state,
           todos: state.todos.filter((a) => a.id !== action.payload),
@@ -43,7 +42,7 @@ const reducer = async (state, action) => {
       }
     case 'TOGGLE_TODO':
       try {
-        await fetch('/api/todos/toggle/' + action.payload)
+        await fetch(`/api/todos/toggle/${action.payload}`)
           .then((res) => res.json());
         return {
           ...state,

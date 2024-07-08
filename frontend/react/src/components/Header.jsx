@@ -44,7 +44,7 @@ const Header = () => {
             href="https://gist.github.com/samsch/0d1f3d3b4745d778f78b230cf6061452"
             target="_blank" rel="noreferrer"
           >
-            Don't use JWT for this, kids
+            Don&apos;t use JWT for this, kids
           </a>
           !
         </p>
