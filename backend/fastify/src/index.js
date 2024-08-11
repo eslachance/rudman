@@ -3,6 +3,9 @@ import fastifySession from '@fastify/session';
 import fastifyCookie from '@fastify/cookie';
 import fastifyFormbody from '@fastify/formbody';
 
+import loginRoutes from "./autroutes.js";
+import todos from "./todoroutes.js";
+
 const app = Fastify({
   logger: true,
 });
@@ -30,11 +33,8 @@ app.post("/api/login", (request, reply) => {
     reply.redirect(401, "/login");
   }
 });
-
-import loginRoutes from "./loginRoutes.js";
 app.register(loginRoutes);
 
-import todos from "./todos.js";
 app.register(todos);
 
 try {
