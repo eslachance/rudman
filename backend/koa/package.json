@@ -2,10 +2,10 @@
   "name": "rudman-koa",
   "version": "1.0.0",
   "description": "A koa backend for regular cookie-based sessions",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,5 +15,10 @@
     "koa": "^2.15.3",
     "koa-body": "^6.0.1",
     "koa-session": "^6.4.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0"
   }
 }
