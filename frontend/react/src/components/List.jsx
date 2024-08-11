@@ -11,6 +11,8 @@ const List = () => {
     });
   }, []);
 
+  console.log(todos);
+
   const handleKeyDown = (e, ...args) => {
     console.log(e, args);
     if (e.key === 'Enter') {

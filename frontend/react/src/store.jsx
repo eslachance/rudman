@@ -17,6 +17,9 @@ const reducer = async (state, action) => {
       try {
         await fetch('/api/todos', {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(action.payload),
         });
         return { ...state, todos: state.todos.concat(action.payload) };
