@@ -1,15 +1,8 @@
-const express = require("express");
+import express from "express";
 const app = express.Router();
+import { isLoggedIn } from "./utils.js";
 
 app.use(express.json());
-
-const isLoggedIn = (req, res, next) => {
-  if (!req?.session?.logged) {
-    res.status(403);
-  } else {
-    next();
-  }
-};
 
 app.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
@@ -28,4 +21,4 @@ app.get("/me", isLoggedIn, (req, res) => {
   });
 });
 
-module.exports = app;
+export default app;

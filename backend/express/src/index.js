@@ -1,8 +1,8 @@
-const express = require("express");
-const session = require("express-session");
+import express from "express";
+import session from "express-session";
 
-const authroutes = require("./authroutes");
-const todoroutes = require("./todos");
+import authroutes from "./authroutes.js";
+import todoroutes from "./todos.js";
 
 const app = express();
 const port = 3005;

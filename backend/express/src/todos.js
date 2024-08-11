@@ -1,5 +1,7 @@
-const { randomUUID } = require("crypto");
-const express = require("express");
+import { randomUUID } from "crypto";
+import express from "express";
+import { isLoggedIn } from "./utils.js";
+
 const app = express.Router();
 app.use(express.json());
 
@@ -22,20 +24,11 @@ let todos = [
   },
 ];
 
-const isLoggedIn = (req, res, next) => {
-  if (!req?.session?.logged) {
-    res.status(403);
-  } else {
-    next();
-  }
-};
-
 app.get("/todos", isLoggedIn, (req, res) => {
   res.json(todos);
-})
+});
 
 app.post("/todos", isLoggedIn, (req, res) => {
-  console.log(req.body);
   const todo = {
     ...req.body,
     id: randomUUID(),
@@ -54,7 +47,7 @@ app.delete("/todos/:id", isLoggedIn, (req, res) => {
   }
 });
 
-app.get("/todos/toggle/:id", (request, reply) => {
+app.get("/todos/toggle/:id", (request, res) => {
   let todoID = request.params.id;
   todos = todos.map((todo) =>
     todo.id === todoID ? { ...todo, completed: !todo.completed } : todo
@@ -62,4 +55,4 @@ app.get("/todos/toggle/:id", (request, reply) => {
   res.json({ success: true });
 });
 
-module.exports = app;
+export default app;
