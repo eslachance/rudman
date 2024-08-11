@@ -1,0 +1,19 @@
+{
+  "name": "hono",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.12.0",
+    "hono": "^4.5.4",
+    "hono-sessions": "^0.5.8"
+  }
+}
